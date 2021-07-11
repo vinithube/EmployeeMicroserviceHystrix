@@ -1,5 +1,6 @@
 package com.example.employee;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +16,16 @@ public class EmployeeServiceApplication {
 		SpringApplication.run(EmployeeServiceApplication.class, args);
 	}
 
+	@Value("${server.port}")
+	private String port;
+
 	@GetMapping("/empDetail")
 	public String getEmployee(){
 		return "Vinod Thube";
+	}
+
+	@GetMapping("/getServerPort")
+	public String getPort(){
+		return "Application is up on Port :"+ port;
 	}
 }
